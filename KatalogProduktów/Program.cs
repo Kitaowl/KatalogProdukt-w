@@ -1,7 +1,7 @@
 ﻿Console.OutputEncoding = System.Text.Encoding.UTF8;
 
-string[] nazwy = { "Procesor", "Pamięć RAM", "Dysk SSD", "Zasilacz" };
-double[] ceny = { 899.00, 249.50, 379.00, 189.99 };
+string[] nazwy = { "Procesor", "Pamięć RAM", "Dysk SSD", "Zasilacz", "Karta graficzna" };
+double[] ceny = { 899.00, 249.50, 379.00, 189.99, 1599.99 };
 
 double suma = 0;
 int licznik = 0;

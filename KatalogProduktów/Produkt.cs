@@ -29,6 +29,7 @@ namespace KatalogProduktów
             get { return _cena; }
             set
             {
+                // instrukcja warunkowa
                 if (value < 0)
                 {
                     _cena = 0;

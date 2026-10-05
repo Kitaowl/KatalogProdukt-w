@@ -29,7 +29,6 @@ namespace KatalogProduktów
             get { return _cena; }
             set
             {
-                // instrukcja warunkowa
                 if (value < 0)
                 {
                     _cena = 0;
@@ -41,6 +40,7 @@ namespace KatalogProduktów
                 }
             }
         }
+        public int MinimalnyStan { get; set; }
         public string Kategoria;
         public int Ilosc;
 
@@ -54,6 +54,42 @@ namespace KatalogProduktów
             Cena = cena;
             Kategoria = kategoria;
             Ilosc = ilosc;
+            MinimalnyStan = 1;
+        }
+        public void WypiszProdukt()
+        {
+            Console.WriteLine($"Nazwa: {Nazwa,-25}| Cena: {Cena,10:f2} zł | " +
+            $"Kategoria: {Kategoria} | Ilość: {Ilosc,5} | Wartość magazynu: {WartoscMagazynu,10:f2} zł");
+        }
+        public string InformacjeOProdukcie()
+        {
+            return $"Nazwa: {Nazwa,-15}| Cena: {Cena,10:f2} zł | " +
+                $"Kategoria: {Kategoria} | Ilość: {Ilosc,5} | Wartość magazynu: {WartoscMagazynu,10:f2} zł";
+        }
+        public static double ObliczWartoscMagazynu(Produkt[] produkty)
+        {
+            double suma = 0;
+            foreach (Produkt produkt in produkty)
+            {
+                suma += produkt.WartoscMagazynu;
+            }
+            return suma;
+        }
+        public bool CzyMoznaZamowic()
+        {
+            return Ilosc > MinimalnyStan;
+        }
+        public void Sprzedaj()
+        {
+            if (CzyMoznaZamowic())
+            {
+                Ilosc--;
+                Console.WriteLine($"Sprzedano produkt: {Nazwa}. Pozostało na stanie: {Ilosc}");
+            }
+            else
+            {
+                Console.WriteLine($"Nie można sprzedać produktu: {Nazwa}. Brak na stanie.");
+            }
         }
     }
 }

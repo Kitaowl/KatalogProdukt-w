@@ -24,8 +24,6 @@ double suma = 0;
 foreach (Produkt produkt in produkty)
 {
     produkt.WypiszProdukt();
-    //Console.WriteLine($"Nazwa: {produkt.Nazwa,-25}| Cena: {produkt.Cena,10:f2} zł | " +
-    //    $"Kategoria: {produkt.Kategoria} | Ilość: {produkt.Ilosc,5} | Wartość magazynu: {produkt.WartoscMagazynu,10:f2} zł");
 
     if (minimalnaCena > produkt.Cena)
     {

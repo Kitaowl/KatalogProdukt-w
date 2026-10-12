@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace KatalogProduktów
@@ -15,7 +16,7 @@ namespace KatalogProduktów
                 if (value == String.Empty)
                 {
                     _nazwa = "Brak nazwy";
-                    throw new ArgumentException("Nazwa nie moży być pusta.");
+                    throw new ArgumentException("Nazwa nie może być pusta.");
                 }
                 else
                 {
@@ -23,6 +24,7 @@ namespace KatalogProduktów
                 }
             }
         }
+
         private double _cena;
         public double Cena
         {
@@ -40,6 +42,7 @@ namespace KatalogProduktów
                 }
             }
         }
+
         public int MinimalnyStan { get; set; }
         public string Kategoria;
         public int Ilosc;
@@ -48,6 +51,7 @@ namespace KatalogProduktów
         {
             get { return _cena * Ilosc; }
         }
+
         public Produkt(string nazwa, double cena, string kategoria, int ilosc)
         {
             Nazwa = nazwa;
@@ -56,16 +60,19 @@ namespace KatalogProduktów
             Ilosc = ilosc;
             MinimalnyStan = 1;
         }
+
         public void WypiszProdukt()
         {
             Console.WriteLine($"Nazwa: {Nazwa,-25}| Cena: {Cena,10:f2} zł | " +
             $"Kategoria: {Kategoria} | Ilość: {Ilosc,5} | Wartość magazynu: {WartoscMagazynu,10:f2} zł");
         }
+
         public string InformacjeOProdukcie()
         {
             return $"Nazwa: {Nazwa,-15}| Cena: {Cena,10:f2} zł | " +
                 $"Kategoria: {Kategoria} | Ilość: {Ilosc,5} | Wartość magazynu: {WartoscMagazynu,10:f2} zł";
         }
+
         public static double ObliczWartoscMagazynu(Produkt[] produkty)
         {
             double suma = 0;
@@ -75,14 +82,17 @@ namespace KatalogProduktów
             }
             return suma;
         }
+
         public static double ObliczWartoscMagazynu(List<Produkt> produkty)
         {
             return produkty.Sum(p => p.WartoscMagazynu);
         }
+
         public bool CzyMoznaZamowic()
         {
             return Ilosc > MinimalnyStan;
         }
+
         public void Sprzedaj()
         {
             if (CzyMoznaZamowic())
@@ -95,6 +105,7 @@ namespace KatalogProduktów
                 Console.WriteLine($"Nie można sprzedać produktu: {Nazwa}. Brak na stanie.");
             }
         }
+
         public static Produkt ZnajdzPoNazwie(Produkt[] produkty, string nazwa)
         {
             foreach (var produkt in produkty)
@@ -106,10 +117,10 @@ namespace KatalogProduktów
             }
             return null;
         }
+
         public static Produkt ZnajdzPoNazwie(List<Produkt> produkty, string nazwa)
         {
             return produkty.FirstOrDefault(p => p.Nazwa.Contains(nazwa, StringComparison.OrdinalIgnoreCase));
         }
     }
 }
-// dfklgdflkj

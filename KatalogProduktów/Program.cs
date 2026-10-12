@@ -108,4 +108,3 @@ listaProduktow.Clear();
 //double srednia = suma / licznik;
 //Console.WriteLine($"Ilość produktów w bazie: {nazwy.Length}");
 //Console.WriteLine($"Średnia cena: {srednia:C} zł z {licznik} produktów"); 
-// dfsfds

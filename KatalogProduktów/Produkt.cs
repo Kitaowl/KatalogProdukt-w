@@ -33,7 +33,7 @@ namespace KatalogProduktów
                 {
                     _cena = 0;
                     throw new ArgumentException("Cena nie może być ujemna.");
-                } 
+                }
                 else
                 {
                     _cena = value;
@@ -75,6 +75,10 @@ namespace KatalogProduktów
             }
             return suma;
         }
+        public static double ObliczWartoscMagazynu(List<Produkt> produkty)
+        {
+            return produkty.Sum(p => p.WartoscMagazynu);
+        }
         public bool CzyMoznaZamowic()
         {
             return Ilosc > MinimalnyStan;
@@ -91,5 +95,21 @@ namespace KatalogProduktów
                 Console.WriteLine($"Nie można sprzedać produktu: {Nazwa}. Brak na stanie.");
             }
         }
+        public static Produkt ZnajdzPoNazwie(Produkt[] produkty, string nazwa)
+        {
+            foreach (var produkt in produkty)
+            {
+                if (produkt.Nazwa == nazwa)
+                {
+                    return produkt;
+                }
+            }
+            return null;
+        }
+        public static Produkt ZnajdzPoNazwie(List<Produkt> produkty, string nazwa)
+        {
+            return produkty.FirstOrDefault(p => p.Nazwa.Contains(nazwa, StringComparison.OrdinalIgnoreCase));
+        }
     }
 }
+// dfklgdflkj
